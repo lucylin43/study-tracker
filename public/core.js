@@ -1,7 +1,33 @@
 // public/core.js
-var scotchTodo = angular.module('scotchTodo', []);
+var scotchTodo = angular.module('scotchTodo', ['ngRoute']);
 
-function mainController($scope, $http) {
+// configure our routes
+scotchTodo.config(function($routeProvider) {
+    $routeProvider
+
+        // route for the home page
+        .when('/', {
+            templateUrl : 'pages/home.html',
+            controller  : 'mainController'
+        })
+
+        // route for the about page
+        .when('/about', {
+            templateUrl : 'pages/about.html',
+            controller  : 'aboutController'
+        })
+
+        // route for the contact page
+        .when('/contact', {
+            templateUrl : 'pages/contact.html',
+            controller  : 'contactController'
+        });
+});
+
+// create the controller and inject Angular's $scope
+scotchTodo.controller('mainController', function($scope, $http) {
+    // create a message to display in our view
+    $scope.message = 'Welcome to the Home Page!';
     $scope.formData = {};
 
     // when landing on the page, get all todos and show them
@@ -39,4 +65,13 @@ function mainController($scope, $http) {
             });
     };
 
-}
+});
+
+scotchTodo.controller('aboutController', function($scope) {
+    $scope.message = 'Welcome to the About Page!';
+});
+
+scotchTodo.controller('contactController', function($scope) {
+    $scope.message = 'Welcome to the Contact Page!';
+});
+

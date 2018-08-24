@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "description": "Simple todo application.",
     "main": "server.js",
-    "author": "Scotch",
+    "author": "Lucy Lin",
     "dependencies": {
         "body-parser": "^1.18.3",
         "express": "^4.16.3",
